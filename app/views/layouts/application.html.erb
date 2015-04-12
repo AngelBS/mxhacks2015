@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+  <title>Hackapp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+</head>
+<nav class="navbar navbar-inverse navbar-fixed-top" id="barraSuperior"role="navigation">
+<section id="sect">
+<% if user_signed_in? %>
+  Logged in as <strong><%= current_user.email %></strong>.
+  <%= link_to 'Edit profile invercionista', edit_user_registration_path, :class => 'navbar-link' %> |
+  <%= link_to "Logout invercionista", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+  <% else %>
+<button id="inver"type="button" class="btn btn-danger">
+  <%= link_to "Sign up inversionista", new_user_registration_path, :class => 'navbar-link'  %> </button> 
+  <button id="login"type="button" class="btn btn-primary">
+  <%= link_to "Log in ", new_user_session_path, :class => 'navbar-link'  %>
+  </button>
+<% end %>
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a id="app"class="elemento"href="#">InverApp</a>
+
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+
+        <!-- /.container -->
+    </nav>
+
+<body>
+
+<div class="container-fluid">
+<p class="navbar-text pull-right">
+ <div class="row">
+    <div class="center-block col-md-2" style="float: none; background-color: transparent">
+<section id="sect">
+<% if user_signed_in? %>
+  Logged in as <strong><%= current_user.email %></strong>.
+  <%= link_to 'Edit profile invercionista', edit_user_registration_path, :class => 'navbar-link' %> |
+  <%= link_to "Logout invercionista", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+  <% else %>
+<% end %>
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+<%= yield %>
+</div>
+</div>
+</section>
+</body>
+</html>

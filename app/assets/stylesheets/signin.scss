@@ -1,0 +1,39 @@
+html {
+	
+background:#505D6E url(../banner.jpg) no-repeat center center fixed; 
+	min-height:50%;
+	-webkit-background-size: cover;
+	   -moz-background-size: cover;
+	     -o-background-size: cover;
+	        background-size: cover;
+}
+#app {
+	margin-top: -115px;
+	color: white;
+	font-size: 34px !important;
+}
+
+#barraSuperior {
+	width: 100% !important;
+	background-color: #332B2D !important;
+	font-size: 18px;
+}
+#sect {
+	align-items: center;
+	position: absolute;
+	margin-top: 120px;
+	color: black;
+
+}
+#inver { 
+	margin-top: -110px;
+	margin-left: 1190px;
+	position:absolute;
+	color: white !important;
+}
+#login {
+	margin-top: -110px;
+	margin-left: 1110px;
+	position: absolute;
+	color: white !important;
+}
