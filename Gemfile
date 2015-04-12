@@ -16,6 +16,10 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'bootstrap-sass', '~> 3.3.4.1'
 gem 'devise', '~> 3.4.1'
+gem 'httparty', '~> 0.13.3'
+gem 'json', '~> 1.8.2'
+gem 'gmaps4rails', '~> 2.1.2'
+gem 'underscore-rails', '~> 1.8.2'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

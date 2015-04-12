@@ -1,4 +1,168 @@
-<h1>index principal</h1>
+<script languaje="javascript"> 
+function resultado(){
+   var fin="no";
+var r=0;
+x=1;
+while(fin=="no"){
+g=document.getElementsByName('p'+x);
+if(g.length!=0){
+for(y=0;y<g.length;y++){
+e=0;
+if (g[y].checked==true){
+r+=parseInt(g[y].value);
+e=1;
+break;
+}
+}
+if(e==0){
+alert("Debe seleccionar al menos una opcion por grupo");
+break;
+break;
+}
+}else{
+fin="si";
+}
+x++;
+}
 
-<p class="navbar-text pull-right">
+if(r<60 || r>40){
+
+	var giro="Agresivo";
+	var descrip="Te gusta el riesgo y disfrutas de invertir grandes cantidades de dinero con expectativas de retorno en un lapso de tiempo corto. Las empresas industriales son las que mejor se adaptan a tu perfil";
+
+}else if(r<39 || r>20){
+
+var giro="Moderado";
+var descrip="Tu quieres obtener un buen rendimiento pero sin arriesgar mucho tu dinero, las mejores empresas para invertir para ti pueden ser las de giro comercial";
+
+}else if(r<19 || r>0){
+
+	var giro="Conservador";
+	var descrip="Estás interesado en invertir pero aún tienes miedo de perder tu dinero, puedes empezar con pequeñas cantidades a largo plazo en empresas de servicios ";
+
+}
+
+document.getElementById('resultadox').innerHTML="resultado:"+r +"<p>Tu tipo de giro es :"+ giro +"<p><p/><br>"+ descrip ;
+
+ document.getElementById('map').style.display = "block";
+}
+</script> +
+<h1 class="text-center">Perfil Financiero</h1>
+
+<form name="fff">
+<p> 
+<label> 1 Que giro de empresa esta buscando? 
+<input type="radio" name="p1" value="10">
+Industrial</label>
+<label> 
+<input type="radio" name="p1" value="6">
+Comercial</label>
+<label> 
+<input type="radio" name="p1" value="3">
+Servicios</label>
+</p>
+
+<p> 
+<label>2 Que forma jurídica le parece mas práctica?
+<input type="radio" name="p2" value="10">
+Sociedad</label>
+<label> 
+<input type="radio" name="p2" value="6">
+Individual</label>
+<label> 
+<input type="radio" name="p2" value="3">
+Cooperativa</label>
+</p>
+
+
+<p> 
+<label>3 Con qué tamaño de empresa le gustaría trabajar?
+<input type="radio" name="p3" value="10">
+Grande</label>
+<label> 
+<input type="radio" name="p3" value="7.5">
+Mediana</label>
+<label> 
+<input type="radio" name="p3" value="5">
+Pequena</label>
+<label> 
+<input type="radio" name="p3" value="2.5">
+Micro</label>
+</p>
+
+
+<p>
+<label>4 Que rango de operación busca?
+<input type="radio" name="p4" value="10">
+Nacional</label>
+<label> 
+<input type="radio" name="p4" value="6">
+Estatal</label>
+<label> 
+<input type="radio" name="p4" value="3">
+Local</label>
+
+</p>
+
+<p>
+<label>5 De cuánto capital dispone para invertir?
+<input type="radio" name="p5" value="10">
+Más de $500,000   </label>
+<label> 
+<input type="radio" name="p5" value="8">
+$500,000 - $250,000</label>
+<label> 
+<input type="radio" name="p5" value="6">
+$250,000 - $100,000 </label>
+<label> 
+<input type="radio" name="p5" value="4">
+$99,000 - $50,000 </label>
+<label> 
+<input type="radio" name="p5" value="2">
+$49,000 - $10,000  </label>
+</p>
+
+<p>
+<label>6 En cuánto tiempo busca su Retorno de Inversión?
+<input type="radio" name="p6" value="10">
+1 - 3 años  </label>
+<label> 
+<input type="radio" name="p6" value="6">
+3 - 5 años </label>
+<label> 
+<input type="radio" name="p6" value="3">
+más de 5 años   </label>
+
+</p>
+
+
+<p><input name="ver" type="button" onClick="resultado()" value="Ver">
+</p></form>
+<br><br><div id="resultadox" align="center"></div>
+<%response = HTTParty.get("http://www3.inegi.org.mx/sistemas/api/denue/v1/consulta/buscar/camiones/21.85717833,-102.28487238/250/0591bbb4-2169-4bf4-9508-24e589c7f039")%>
+
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px; display:none; '></div>
+</div>
+<script languaje="javascript"> 
+
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers([
+    {
+      "lat": 0,
+      "lng": 0,
+      "picture": {
+        "url": "https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png",
+        "width":  36,
+        "height": 36
+      },
+      "infowindow": "hello!"
+    }
+  ]);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+});
+
+</script>
 
